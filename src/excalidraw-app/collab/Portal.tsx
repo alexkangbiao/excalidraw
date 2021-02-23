@@ -84,6 +84,12 @@ class Portal {
     }
   }
 
+  async _broadcastSocketMediaStream(stream: MediaStream) {
+    if (this.isOpen()) {
+      this.socket!.emit(BROADCAST.SERVER_MEDIA, this.roomId, stream);
+    }
+  }
+
   broadcastScene = async (
     sceneType: SCENE.INIT | SCENE.UPDATE,
     syncableElements: ExcalidrawElement[],
@@ -170,6 +176,12 @@ class Portal {
         data as SocketUpdateData,
         true, // volatile
       );
+    }
+  };
+
+  broadcastMediaStream = (stream: MediaStream) => {
+    if (this.socket?.id) {
+      return this._broadcastSocketMediaStream(stream);
     }
   };
 }

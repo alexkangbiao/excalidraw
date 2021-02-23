@@ -6,6 +6,7 @@ export const SYNC_FULL_SCENE_INTERVAL_MS = 20000;
 export const BROADCAST = {
   SERVER_VOLATILE: "server-volatile-broadcast",
   SERVER: "server-broadcast",
+  SERVER_MEDIA: "server-broadcast-media",
 };
 
 export enum SCENE {
